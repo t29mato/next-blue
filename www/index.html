@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <title>Onsen UI Video Streaming App</title>
+  <script src="components/loader.js"></script>
+  <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+  <script src="js/controller.js"></script>  
+  <script src="js/app.js"></script>
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <ons-navigator id="myNavigator" page="login.html"></ons-navigator>
+
+
+  <!--  The Login Page -->
+
+  <template id="login.html">
+    <ons-page id="login">
+      <ons-toolbar>
+        <div class="center" style="color: blue">NextBlue</div>
+        <div class="right">
+          <ons-if platform="android">
+            <ons-toolbar-button><ons-icon icon="fa-pencil"></ons-icon></ons-toolbar-button>
+            <ons-toolbar-button><ons-icon icon="ion-android-more-vertical"></ons-icon></ons-toolbar-button>
+          </ons-if>
+        </div>
+      </ons-toolbar>
+      <div id="video-player"></div>
+      <div id="video-controller">
+        <ons-button modifier="light" onclick="previousVideo()"><<</ons-button>
+        <ons-button modifier="light" onclick="backVideo()"><</ons-button>
+        <ons-button modifier="light" onclick="stopVideo()">■</ons-button>
+        <ons-button modifier="light" onclick="playVideo()">▶︎</ons-button>
+        <ons-button modifier="light" onclick="pauseVideo()">||</ons-button>
+        <ons-button modifier="light" onclick="goVideo()">></ons-button>
+        <ons-button modifier="light" onclick="nextVideo()">>></ons-button>
+      </div>
+      <div id="video-list"></div>
+    </ons-page>
+  </template>
+
+
+  <!--  The Splitter Page -->
+
+  <template id="home_splitter.html">
+    <ons-page id="home_splitter">
+      <ons-splitter>
+        <ons-splitter-side id="menu" page="menu.html" side="left" width="220px" collapse swipeable></ons-splitter-side>
+        <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+      </ons-splitter>
+    </ons-page>
+  </template>
+
+
+  <!--  The Splitter Menu -->
+
+  <template id="menu.html">
+    <ons-page id="menu">
+      <ons-list style="background-color: transparent;">
+        <ons-list-header class="menu_header">View by Category from Splitter.</ons-list-header>
+        <ons-list-item tappable>Action</ons-list-item>
+        <ons-list-item tappable>Comedy</ons-list-item>
+        <ons-list-item tappable>Horror</ons-list-item>
+        <ons-list-item tappable>Romance</ons-list-item>
+        <ons-list-header class="menu_header">Options</ons-list-header>
+        <ons-list-item tappable>Account Settings</ons-list-item>
+        <ons-list-item tappable>Global Settings</ons-list-item>
+        <ons-list-item onclick="goBack()" tappable>Logout</ons-list-item>
+      </ons-list>
+    </ons-page>
+  </template>
+
+
+  <!--  The Home Page -->
+
+  <template id="home.html">
+    <ons-page id="home">
+            <iframe width="100%" height="auto" src="https://www.youtube.com/embed/v8eSPf4RzTU?&autoplay=1&start=266&end=454" frameborder="0"></iframe>
+      <ons-toolbar>
+        <div class="left"><ons-toolbar-button id="menu_button"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button></div>
+        <div class="center" style="color: red">HOME PAGE</div>
+        <div class="right">
+          <ons-toolbar-button><ons-icon icon="fa-search"></ons-icon></ons-toolbar-button>
+          <ons-if platform="android"><ons-toolbar-button><ons-icon icon="ion-android-more-vertical"></ons-icon></ons-toolbar-button></ons-if>
+        </div>
+      </ons-toolbar>
+
+
+      <ons-carousel class="carousel" swipeable auto-scroll id="carousel">
+        <ons-carousel-item>
+          <img src="img/onsenui-roadmap.jpg" />
+        </ons-carousel-item>
+        <ons-carousel-item>
+          <img src="img/Monaca_Logo.jpg" />
+        </ons-carousel-item>
+        <ons-carousel-item>
+          <img src="img/Onsen_UI_Logo.jpg" />
+        </ons-carousel-item>
+      </ons-carousel>
+      <div class="cover-label center">
+        <ul>
+          <li><div id="dot0" class="circle circle_current">&#x25cf;</div></li>
+          <li><div id="dot1" class="circle">&#x25cf;</div></li>
+          <li><div id="dot2" class="circle">&#x25cf;</div></li>
+        </ul>
+      </div>
+    </ons-page>
+  </template>
+
+</body>
+</html>

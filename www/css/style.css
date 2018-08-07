@@ -1,0 +1,48 @@
+
+
+.loader {
+  position: absolute;
+  bottom: 3%;
+  z-index: 100;
+  right: 2%;
+}
+
+#video-list {
+  padding-top: 260px;
+}
+
+#video-list a {
+  float: left;
+  position: relative;
+  display: block;
+  width: 50%;
+  line-height: 0;
+}
+
+#video-list .thumbnail {
+  width: 100%;
+}
+
+#video-player {
+  position: fixed;
+  background: white;
+  z-index: 200;
+}
+
+#video-controller{
+  width: 100%;
+  position: fixed;
+  top: 274px;
+  padding: 4px 0px 4px;
+  text-align: center;
+  z-index: 200;
+  background: white;
+}
+#video-controller ons-button {
+  width: 13%;
+  text-align: center;
+}
+
+.ytp-watermark{
+  display: none !important;
+}
