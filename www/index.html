@@ -30,13 +30,11 @@
       </ons-toolbar>
       <div id="video_player"></div>
       <div id="video_controller">
-        <ons-button modifier="light" onclick="previousVideo()"><<</ons-button>
         <ons-button modifier="light" onclick="backVideo()"><</ons-button>
         <ons-button modifier="light" onclick="stopVideo()">■</ons-button>
         <ons-button modifier="light" onclick="playVideo()">▶︎</ons-button>
         <ons-button modifier="light" onclick="pauseVideo()">||</ons-button>
         <ons-button modifier="light" onclick="goVideo()">></ons-button>
-        <ons-button modifier="light" onclick="nextVideo()">>></ons-button>
       </div>
       <div id="video_list"></div>
     </ons-page>
@@ -61,16 +59,16 @@
   <template id="menu.html">
     <ons-page id="menu">
       <ons-list style="background-color: transparent;">
-        <ons-list-item tappable onclick="updateVideo()">All Video</ons-list-item>
+        <ons-list-item tappable onclick="updateVideoList()">All Video</ons-list-item>
         <ons-list-header class="menu_header">Country.</ons-list-header>
-        <ons-list-item tappable onclick="updateVideo('Japan')">Japan</ons-list-item>
-        <ons-list-item tappable onclick="updateVideo('Egypt')">Egypt</ons-list-item>
-        <ons-list-item tappable onclick="updateVideo('Saudi Arabia')">Saudi Arabia</ons-list-item>
-        <ons-list-item tappable onclick="updateVideo('Fiji')">Fiji</ons-list-item>
+        <ons-list-item tappable onclick="updateVideoList('Japan')">Japan</ons-list-item>
+        <ons-list-item tappable onclick="updateVideoList('Egypt')">Egypt</ons-list-item>
+        <ons-list-item tappable onclick="updateVideoList('Saudi Arabia')">Saudi Arabia</ons-list-item>
+        <ons-list-item tappable onclick="updateVideoList('Fiji')">Fiji</ons-list-item>
         <ons-list-header class="menu_header">Sea.</ons-list-header>
-        <ons-list-item tappable onclick="updateVideo('Red Sea')">Red Sea</ons-list-item>
+        <ons-list-item tappable onclick="updateVideoList('Red Sea')">Red Sea</ons-list-item>
         <ons-list-header class="menu_header">Island.</ons-list-header>
-        <ons-list-item tappable onclick="updateVideo('Roatan island')">Roatan island</ons-list-item>
+        <ons-list-item tappable onclick="updateVideoList('Roatan island')">Roatan island</ons-list-item>
       </ons-list>
     </ons-page>
   </template>
@@ -79,7 +77,7 @@
 
   <template id="info.html">
     <ons-page id="info">
-      <ons-list id="ons-list-info">
+      <ons-list id="video_info">
       </ons-list>
     </ons-page>
   </template>
