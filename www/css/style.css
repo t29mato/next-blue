@@ -5,11 +5,11 @@
   right: 2%;
 }
 
-#video-list {
+#video_list {
   padding-top: 260px;
 }
 
-#video-list a {
+#video_list a {
   float: left;
   position: relative;
   display: block;
@@ -17,17 +17,17 @@
   line-height: 0;
 }
 
-#video-list .thumbnail {
+#video_list .thumbnail {
   width: 100%;
 }
 
-#video-player {
+#video_player {
   position: fixed;
   background: white;
   z-index: 200;
 }
 
-#video-controller{
+#video_controller{
   width: 100%;
   position: fixed;
   top: 274px;
@@ -36,7 +36,7 @@
   z-index: 200;
   background: white;
 }
-#video-controller ons-button {
+#video_controller ons-button {
   width: 13%;
   text-align: center;
 }
