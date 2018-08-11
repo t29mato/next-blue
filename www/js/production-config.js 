@@ -1,0 +1,8 @@
+module.exports = {
+  // FTP 接続先情報
+  ftp: {
+    aaaaaaaa    : 'useaar',
+    password: 'password',
+    host    : 'example.com'
+  }
+};
