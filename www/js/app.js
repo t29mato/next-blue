@@ -11,9 +11,51 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+// オススメtagを作成
+function createReccomendTag () { 
+  console.log('tagメニュー作成');
+  var tags = {
+    country: [
+      'Fiji',
+      'Palau',
+      'Japan',
+    ],
+    island: [
+      'Sipadan island',
+      'Roatan island',
+      'Guam island',
+      'Hawai island',      
+    ],
+    sea: [
+      'Red Sea',
+    ],
+    other: [
+      'Wreck Diving',
+      'Skin Diving',
+      'Night Diving',
+    ]
+  };
+  $('<ons-list-item>', {
+    tappable: '',
+    onclick: 'updateVideoList()',
+  }).html('All').appendTo($('#video_tag'));
+  for (var i in tags) {
+    $('<ons-list-header>', {
+      class: 'menu_header'
+    }).html(i).appendTo($('#video_tag'));
+    for (var tag of tags[i]) {
+      $('<ons-list-item>', {
+        tappable: '',
+        onclick: 'updateVideoList("' + tag + '")',
+      }).html(tag).appendTo($('#video_tag'));
+    }
+  }
+}
+
 // YoutubeIframeAPIが準備できたら実行
 function onYouTubeIframeAPIReady() {
-  getVideo().done(function(data) {
+  getVideo().done(function(data) {    
+    createReccomendTag();
     jsonVideo = JSON.parse(data);
     $('#title').html('All (' + jsonVideo.length + ')')
     createVideoPlayer(0);
