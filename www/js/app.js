@@ -1,7 +1,7 @@
 // グローバル変数
 var videoPlayer;
 var jsonVideo;
-var NXB_API_URL = 'https://script.google.com/macros/s/AKfycbw6IbZpgyHknQ4ARKAzNEGv4bVwthZBoYExxQZSOxoKfdds_8Q/exec';
+var NXB_API_URL = 'https://script.google.com/macros/s/AKfycbxJOWoWTM1lKPXX0J1aXAXgBHA1jBOFDaHQ1JLPeLrArbYsLGe9/exec';
 var videoId;
 var videoNum;
 
@@ -79,7 +79,14 @@ function emptyVideoList() {
 function updateVideoInfo(num) {
   $('#video_info').empty();
   var html = $('#video_info');
-  var tags = ['country_name_en', 'area_name_en', 'spot_name_en', 'sea_name_en', 'other_name_en'];
+  var tags = [
+    ['Creator', 'channel_title'],
+    ['Country', 'country_name_en'],
+    ['Area', 'Area_name_en'],
+    ['Island', 'island_name_en'],
+    ['Sea', 'sea_name_en'],
+    ['Tag', 'other_name_en']
+  ];
   $('<ons-list-item>').html('Video Info.').appendTo(html);
   if (jsonVideo[num].title) {
     html.append('<ons-list-header class="menu_header">Title</ons-list-header>');
@@ -89,20 +96,14 @@ function updateVideoInfo(num) {
     html.append('<ons-list-header class="menu_header">Filming Date</ons-list-header>');
     html.append('<ons-list-item>' + jsonVideo[num].year + '/' + jsonVideo[num].month + '</ons-list-item>');
   }
-  if (jsonVideo[num].creator_name_en) {
-    html.append('<ons-list-header class="menu_header">Creator</ons-list-header>');
-    $('<ons-list-item>', {
-      tappable: '',
-      onclick: 'updateVideoList("' + jsonVideo[num].creator_name_en + '")',
-    }).text(jsonVideo[num].creator_name_en).appendTo(html);
-  }
-  html.append('<ons-list-header class="menu_header">Tag</ons-list-header>');
+
   for (var tag of tags) {
-    if (jsonVideo[num][tag]) {
+    if (jsonVideo[num][tag[1]]) {
+      html.append('<ons-list-header class="menu_header">' + tag[0] + '</ons-list-header>');
       $('<ons-list-item>', {
         tappable: '',
-        onclick: 'updateVideoList("' + jsonVideo[num][tag] + '")',
-      }).text(jsonVideo[num][tag]).appendTo(html);
+        onclick: 'updateVideoList("' + jsonVideo[num][tag[1]] + '")',
+      }).text(jsonVideo[num][tag[1]]).appendTo(html);
     }
   }
 
@@ -131,7 +132,6 @@ function createVideoPlayer(num) {
       controls: 1,
       modestbranding: 1,
       disablekb: 1,
-      enablejsapi: 0,
     }
   });
 }
