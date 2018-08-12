@@ -5,31 +5,42 @@ var NXB_API_URL = 'https://script.google.com/macros/s/AKfycbw6IbZpgyHknQ4ARKAzNE
 var videoId;
 var videoNum;
 
+// YoutubeIframeAPIの準備
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 // YoutubeIframeAPIが準備できたら実行
-function onYouTubeIframeAPIReady() {  getVideo().done(function(data) {
+function onYouTubeIframeAPIReady() {
+  getVideo().done(function(data) {
     jsonVideo = JSON.parse(data);
-    $('#title').append(' (' + jsonVideo.length + ')');
+    $('#title').html('All (' + jsonVideo.length + ')')
     createVideoPlayer(0);
     createVideoList();
     setLoader('pause', 0);
   })
 }
 
-
 // NJB_APIよりjsonにビデオ情報を取得
 function getVideo(tag) {
-  var url = NXB_API_URL;  if (tag) { url = url + '?tag=' + tag; }
+  var url = NXB_API_URL;
+  if (tag) { url = url + '?tag=' + tag; }
   return $.ajax({
     url: url,
     type: 'GET',
   })
 }
 
-
 // ビデオ一覧を更新
 function updateVideoList(tag) {
-  document.querySelector('#menu').close();
-  document.querySelector('#info').close();  $('#title').html(tag);
+  document.querySelector('#tag').close();
+  document.querySelector('#info').close(); 
+  if (tag) {
+    $('#title').html(tag);
+  } else {
+    $('#title').html('All ');
+  }
   $('#video_list').html('<div style="text-align:center; position:relative; top:50px;"><ons-icon size="50px" spin icon="md-spinner"></ons-icon></div>');
   getVideo(tag).done(function(data) {
     jsonVideo = JSON.parse(data);
@@ -43,7 +54,8 @@ function updateVideoList(tag) {
 function createVideoList() {
   for (var num in jsonVideo) {
     var a = $('<a>', {
-      href: '#',      onclick: 'createVideoPlayer(' + num + ')',
+      href: '#',
+      onclick: 'createVideoPlayer(' + num + ')',
       class: 'relative',
     });
     var img = $('<img>', {
@@ -58,7 +70,6 @@ function createVideoList() {
   }
 }
 
-
 // ビデオ一覧を空に
 function emptyVideoList() {
   $('#video_list').empty();
@@ -70,7 +81,8 @@ function updateVideoInfo(num) {
   var html = $('#video_info');
   var tags = ['country_name_en', 'area_name_en', 'spot_name_en', 'sea_name_en', 'other_name_en'];
   $('<ons-list-item>').html('Video Info.').appendTo(html);
-  if (jsonVideo[num].title) {    html.append('<ons-list-header class="menu_header">Title</ons-list-header>');
+  if (jsonVideo[num].title) {
+    html.append('<ons-list-header class="menu_header">Title</ons-list-header>');
     html.append('<ons-list-item>' + jsonVideo[num].title + '</ons-list-item>');
   }
   if (jsonVideo[num].year) {
@@ -96,7 +108,6 @@ function updateVideoInfo(num) {
 
 }
 
-
 // Iframeを埋め込みビデオを再生
 function createVideoPlayer(num) {
   videoId = jsonVideo[num].video_id;
@@ -105,7 +116,8 @@ function createVideoPlayer(num) {
   updateVideoInfo(num);
   setLoader('pause', num);
   videoPlayer = new YT.Player('video_player', {
-    height: '210',    width: '100%',
+    height: '210',
+     width: '100%',
     videoId: videoId,
     events: {
       'onReady': onPlayerReady,
@@ -123,7 +135,6 @@ function createVideoPlayer(num) {
     }
   });
 }
-
 
 // ローダーアニメーションを設定
 function setLoader(type, num) {
@@ -145,18 +156,21 @@ function setLoader(type, num) {
   }
 }
 
-
 // 再生の準備が整ったらビデオ再生
 function onPlayerReady(event) {
   event.target.playVideo();
 }
 
-
 // ビデオの状態が変更になったら、
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING) {
-    setLoader('play');  } else if (event.data == YT.PlayerState.ENDED) {
+    setLoader('play');
+  }
+  if (event.data == YT.PlayerState.ENDED) {
     nextVideo();
+  }
+  if (event.data == YT.PlayerState.PAUSED) {
+    setLoader('pause');
   }
 }
 
