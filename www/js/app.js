@@ -54,7 +54,8 @@ function createReccomendTag () {
 
 // YoutubeIframeAPIが準備できたら実行
 function onYouTubeIframeAPIReady() {
-  getVideo().done(function(data) {    
+  getVideo().done(function(data) {
+    addCssPlatform();
     createReccomendTag();
     jsonVideo = JSON.parse(data);
     $('#title').html('All (' + jsonVideo.length + ')')
@@ -62,6 +63,20 @@ function onYouTubeIframeAPIReady() {
     createVideoList();
     setLoader('pause', 0);
   })
+}
+
+// 
+function addCssPlatform() {
+  if (ons.platform.isIOS()) {
+    $('#video_player').addClass('video_player_ios');
+    $('#video_controller').addClass('video_controller_ios');
+    $('#video_list').addClass('video_list_ios');
+  }
+  if (ons.platform.isAndroid()) {
+    $('#video_player').addClass('video_player_android');
+    $('#video_controller').addClass('video_controller_android');
+    $('#video_list').addClass('video_list_android');
+  }
 }
 
 // NJB_APIよりjsonにビデオ情報を取得
@@ -200,7 +215,7 @@ function setLoader(type, num) {
 
 // 再生の準備が整ったらビデオ再生
 function onPlayerReady(event) {
-  // event.target.playVideo();
+  event.target.playVideo();
 }
 
 // ビデオの状態が変更になったら、
