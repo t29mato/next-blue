@@ -1,66 +1,135 @@
-.loader {
-  position: absolute;
-  bottom: 3%;
-  z-index: 100;
-  right: 2%;
+@media screen and (orientation: portrait) {
+  .loader {
+    position: absolute;
+    bottom: 3%;
+    z-index: 100;
+    right: 2%;
+  }
+
+  #video_player {
+    position: fixed;
+    left: 0;
+    background: white;
+    z-index: 200;
+    height: 30vh;
+    width: 100%;
+  }
+
+  .video_player_ios {
+  }
+
+  .video_player_android {
+  }
+
+  #video_controller {
+    width: 100%;
+    position: fixed;
+    display: block;
+    padding: 0.5vh 0;
+    text-align: center;
+    z-index: 200;
+    background: white;
+  }
+
+  .video_controller_ios {
+    top: 37.5vh;
+  }
+
+  .video_controller_android {
+    top: 38.5vh;
+  }
+
+  #video_controller ons-button {
+    width: 18%;
+    text-align: center;
+  }
+
+  .video_list_ios {
+    padding-top: 35.5vh;
+  }
+
+  .video_list_android {
+    padding-top: 36.5vh;
+  }
+
+  #video_list a {
+    float: left;
+    position: relative;
+    display: block;
+    width: 50%;
+    line-height: 0;
+  }
+
+  #video_list .thumbnail {
+    width: 100%;
+  }
 }
 
-#video_player {
-  position: fixed;  
-  left: 0;
-  width: 100%;
-  background: white;
-  z-index: 200;
-}
+@media screen and (orientation: landscape) {
+  .loader {
+    position: absolute;
+    bottom: 3%;
+    z-index: 100;
+    right: 2%;
+  }
 
-.video_player_ios {
-  height: 210px;
-}
+  #video_player {
+    position: fixed;
+    left: 0;
+    background: white;
+    z-index: 200;
+    height: 69vh;
+    width: 70vw;
+  }
 
-.video_player_android {
-  height: 210px;
-}
+  .video_player_ios {
+    /* height: 210px; */
+  }
 
-#video_controller{
-  width: 100%;
-  position: fixed;
-  display: block;
-  padding: 4px 0px 4px;
-  text-align: center;
-  z-index: 200;
-  background: white;
-}
+  .video_player_android {
+    height: 210px;
+  }
 
-.video_controller_ios {
-  top: 274px;
-}
+  #video_controller {
+    width: 70vw;
+    position: fixed;
+    display: block;
+    padding: 4px 0px 4px;
+    text-align: center;
+    z-index: 200;
+    background: white;
+  }
 
-.video_controller_android {
-  top: 266px;
-}
+  .video_controller_ios {
+    top: 85vh;
+  }
 
-#video_controller ons-button {
-  width: 18%;
-  text-align: center;
-}
+  .video_controller_android {
+    top: 88vh;
+  }
 
-.video_list_ios {
-  padding-top: 260px;
-}
+  #video_controller ons-button {
+    width: 18%;
+    text-align: center;
+  }
 
-.video_list_android {
-  padding-top: 255px;
-}
+  .video_list_ios {
+    /* padding-top: 260px; */
+  }
 
-#video_list a {
-  float: left;
-  position: relative;
-  display: block;
-  width: 50%;
-  line-height: 0;
-}
+  .video_list_android {
+  }
 
-#video_list .thumbnail {
-  width: 100%;
-}
+  #video_list a {
+    /* float: left; */
+    position: relative;
+    display: block;
+    width: 30vw;
+    line-height: 0;
+    margin-left: 70vw;
+  }
 
+  #video_list .thumbnail {
+    width: 100%;
+  }
+}

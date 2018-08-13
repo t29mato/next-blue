@@ -159,8 +159,8 @@ function createVideoPlayer(num) {
   updateVideoInfo(num);
   setLoader('pause', num);
   videoPlayer = new YT.Player('video_player', {
-    height: '210',
-     width: '100%',
+    height: 'auto',
+    width: 'auto',
     videoId: videoId,
     events: {
       'onReady': onPlayerReady,
@@ -200,7 +200,7 @@ function setLoader(type, num) {
 
 // 再生の準備が整ったらビデオ再生
 function onPlayerReady(event) {
-  event.target.playVideo();
+  // event.target.playVideo();
 }
 
 // ビデオの状態が変更になったら、
