@@ -7,49 +7,36 @@
   }
 
   #video_player {
-    position: fixed;
+    display: block;
+    position: -webkit-sticky;
+    position: sticky;
     left: 0;
-    background: white;
     z-index: 200;
     height: 30vh;
     width: 100%;
-  }
-
-  .video_player_ios {
-  }
-
-  .video_player_android {
+    top: 0vh;
   }
 
   #video_controller {
     width: 100%;
-    position: fixed;
+    position: -webkit-sticky;
+    position: sticky;
     display: block;
     padding: 0.5vh 0;
     text-align: center;
     z-index: 200;
-    background: white;
-  }
-
-  .video_controller_ios {
-    top: 37.5vh;
-  }
-
-  .video_controller_android {
-    top: 38.5vh;
+    top: 30vh;
   }
 
   #video_controller ons-button {
     width: 18%;
     text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.8);
   }
 
-  .video_list_ios {
-    padding-top: 35.5vh;
-  }
-
-  .video_list_android {
-    padding-top: 36.5vh;
+  #video_list {
+    margin-top: -7vh;
   }
 
   #video_list a {
@@ -74,7 +61,9 @@
   }
 
   #video_player {
-    position: fixed;
+    display: block;
+    position: -webkit-sticky;
+    position: sticky;
     left: 0;
     background: white;
     z-index: 200;
@@ -83,16 +72,17 @@
   }
 
   .video_player_ios {
-    /* height: 210px; */
+    top: 0vh;
   }
 
   .video_player_android {
-    height: 210px;
+    top: 0vh;
   }
 
   #video_controller {
     width: 70vw;
-    position: fixed;
+    position: -webkit-sticky;
+    position: sticky;
     display: block;
     padding: 4px 0px 4px;
     text-align: center;
