@@ -1,11 +1,23 @@
-@media screen and (orientation: portrait) {
-  .loader {
-    position: absolute;
-    bottom: 3%;
-    z-index: 100;
-    right: 2%;
-  }
+.loader {
+  position: absolute;
+  bottom: 3%;
+  z-index: 100;
+  right: 2%;
+}
 
+#video_list .thumbnail {
+  width: 100%;
+}
+
+#video_controller ons-button {
+  width: 18%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+@media screen and (orientation: portrait) {
   #video_player {
     display: block;
     position: -webkit-sticky;
@@ -28,12 +40,42 @@
     top: 30vh;
   }
 
-  #video_controller ons-button {
-    width: 18%;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.2);
-    color: rgba(255, 255, 255, 0.8);
+  #video_list {
+    margin-top: -7vh;
   }
+
+  #video_list a {
+    float: left;
+    position: relative;
+    display: block;
+    width: 50%;
+    line-height: 0;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  #video_player {
+    display: block;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    z-index: 200;
+    height: 30vh;
+    width: 100%;
+    top: 0vh;
+  }
+
+  #video_controller {
+    width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    display: block;
+    padding: 0.5vh 0;
+    text-align: center;
+    z-index: 200;
+    top: 30vh;
+  }
+
 
   #video_list {
     margin-top: -7vh;
@@ -47,79 +89,4 @@
     line-height: 0;
   }
 
-  #video_list .thumbnail {
-    width: 100%;
-  }
-}
-
-@media screen and (orientation: landscape) {
-  .loader {
-    position: absolute;
-    bottom: 3%;
-    z-index: 100;
-    right: 2%;
-  }
-
-  #video_player {
-    display: block;
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    background: white;
-    z-index: 200;
-    height: 69vh;
-    width: 70vw;
-  }
-
-  .video_player_ios {
-    top: 0vh;
-  }
-
-  .video_player_android {
-    top: 0vh;
-  }
-
-  #video_controller {
-    width: 70vw;
-    position: -webkit-sticky;
-    position: sticky;
-    display: block;
-    padding: 4px 0px 4px;
-    text-align: center;
-    z-index: 200;
-    background: white;
-  }
-
-  .video_controller_ios {
-    top: 85vh;
-  }
-
-  .video_controller_android {
-    top: 86vh;
-  }
-
-  #video_controller ons-button {
-    width: 18%;
-    text-align: center;
-  }
-
-  .video_list_ios {
-    /* padding-top: 260px; */
-  }
-
-  .video_list_android {
-  }
-
-  #video_list a {
-    /* float: left; */
-    position: relative;
-    display: block;
-    width: 30vw;
-    line-height: 0;
-    margin-left: 70vw;
-  }
-
-  #video_list .thumbnail {
-    width: 100%;
-  }
 }
