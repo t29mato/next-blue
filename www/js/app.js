@@ -13,7 +13,6 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // オススメtagを作成
 function createReccomendTag () { 
-  console.log('tagメニュー作成');
   var tags = {
     country: [
       'Fiji',
